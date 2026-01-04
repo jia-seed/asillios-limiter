@@ -292,6 +292,61 @@ function calculateCost(input: number, output: number, model?: string): number {
 }
 
 /**
+ * Validates the limiter configuration.
+ * Tokens cannot be negative, thresholds must be between 0-100, etc.
+ * @internal
+ */
+function validateLimiterConfig(config: LimiterConfig): void {
+  if (config.limit !== undefined && config.limit < 0) {
+    throw new Error("The maximum tokens allowed (limit) must be non-negative.");
+  }
+
+  if (config.window !== undefined && config.window < 0) {
+    throw new Error("The time window (window) must be non-negative.");
+  }
+
+  if (config.burstPercent !== undefined && config.burstPercent < 0) {
+    throw new Error("The burst percentage (burstPercent) must be non-negative.");
+  }
+
+  if (config.costLimit !== undefined && config.costLimit < 0) {
+    throw new Error("The maximum cost in USD (costLimit) must be non-negative.");
+  }
+
+  if (config.thresholds !== undefined) {
+    for (const threshold of config.thresholds) {
+      if (threshold < 0 || threshold > 100) {
+        throw new Error("Threshold percentages must be between 0 and 100.");
+      }
+    }
+  }
+
+  if (config.limits !== undefined) {
+    if (!Array.isArray(config.limits) || config.limits.length === 0) {
+      throw new Error("The limits array must be a non-empty array.");
+    }
+    for (const limit of config.limits) {
+      if (limit.tokens < 0) {
+        throw new Error("Each limit's tokens value must be non-negative.");
+      }
+      if (limit.window < 0) {
+        throw new Error("Each limit's window value must be non-negative.");
+      }
+    }
+  }
+}
+
+/**
+ * Validates the user ID.
+ * @param userId
+ */
+function validateUserId(userId: string): void {
+  if (!userId || typeof userId !== 'string' || userId.trim() === '') {
+    throw new Error('userId must be a non-empty string');
+  }
+}
+
+/**
  * Creates a token-based rate limiter for LLM API calls.
  *
  * Implements sliding window rate limiting with support for:
@@ -325,6 +380,10 @@ function calculateCost(input: number, output: number, model?: string): number {
  * ```
  */
 export function createLimiter(config: LimiterConfig) {
+  // Validate configuration
+  validateLimiterConfig(config);
+
+
   const storage = config.storage ?? new MemoryStorage();
   const thresholds = config.thresholds ?? [80, 90, 100];
   const burstMultiplier = 1 + (config.burstPercent ?? 0) / 100;
@@ -373,6 +432,7 @@ export function createLimiter(config: LimiterConfig) {
    * @returns true if user is within all limits, false otherwise
    */
   async function check(userId: string): Promise<boolean> {
+    validateUserId(userId);
     const data = await getUserData(userId);
     const entries = pruneEntries(data.entries);
 
@@ -398,6 +458,7 @@ export function createLimiter(config: LimiterConfig) {
    * @returns Number of tokens remaining before hitting the limit
    */
   async function getRemainingTokens(userId: string): Promise<number> {
+    validateUserId(userId);
     const data = await getUserData(userId);
     const entries = pruneEntries(data.entries);
     const primaryLimit = limits[0];
@@ -411,6 +472,7 @@ export function createLimiter(config: LimiterConfig) {
    * @returns Statistics including tokens used, remaining, cost (if enabled), and reset time
    */
   async function stats(userId: string): Promise<UserStats> {
+    validateUserId(userId);
     const data = await getUserData(userId);
     const entries = pruneEntries(data.entries);
     const primaryLimit = limits[0];
@@ -496,6 +558,7 @@ export function createLimiter(config: LimiterConfig) {
     fn: () => Promise<T>,
     options?: { throwOnLimit?: boolean; model?: string }
   ): Promise<T> {
+    validateUserId(userId);
     const withinLimit = await check(userId);
 
     if (!withinLimit && options?.throwOnLimit) {
@@ -539,6 +602,14 @@ export function createLimiter(config: LimiterConfig) {
     tokens: number,
     cost = 0,
   ): Promise<void> {
+    validateUserId(userId);
+    // Ignore non-positive token additions
+    if (tokens < 0) {
+      throw new Error("Tokens to add must be non-negative.");
+    }
+    if (cost < 0) {
+      throw new Error("Cost to add must be non-negative.");
+    }
     await recordUsage(userId, tokens, cost);
   }
 
@@ -547,6 +618,7 @@ export function createLimiter(config: LimiterConfig) {
    * @param userId - Unique identifier for the user
    */
   async function reset(userId: string): Promise<void> {
+    validateUserId(userId);
     await storage.delete(userId);
   }
 
