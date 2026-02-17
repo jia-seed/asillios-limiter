@@ -11,8 +11,26 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Asillios",
-  description: "Asillios is an open source TypeScript library for per-user rate limiting, usage stats, and threshold alerts.",
+  title: "Asillios - Rate Limiting Tool & Developer Tools for AI Apps",
+  description: "Open source TypeScript rate limiting tools for developers. Control API usage, track tokens, and prevent surprise bills in AI applications with professional developer tools.",
+  keywords: "rate limiting, developer tools, API tools, typescript library, ai tools, usage tracking, development tools, hand tools for coding",
+  authors: [{ name: "Asillios Team" }],
+  robots: "index, follow",
+  openGraph: {
+    title: "Asillios - Rate Limiting Tool & Developer Tools for AI Apps",
+    description: "Open source TypeScript rate limiting tools for developers. Control API usage, track tokens, and prevent surprise bills in AI applications.",
+    type: "website",
+    url: "https://tempo.new",
+    siteName: "Asillios",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Asillios - Rate Limiting Tool & Developer Tools for AI Apps",
+    description: "Open source TypeScript rate limiting tools for developers. Control API usage and prevent surprise bills.",
+  },
+  alternates: {
+    canonical: "https://tempo.new",
+  },
   icons: {
     icon: "/greek.png",
   },
