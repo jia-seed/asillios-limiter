@@ -15,7 +15,7 @@ export function FeaturesSectionDemo() {
     {
       title: "Simple Integration",
       description:
-        "Wrap your LLM calls with a few lines of code. Auto-detects OpenAI and Anthropic response formats.",
+        "Wrap your LLM calls with exceptional ease. Auto-detects OpenAI and Anthropic response formats with just a few lines of code.",
       skeleton: <SkeletonOne />,
       className:
         "col-span-1 md:col-span-1 lg:col-span-4 border-b md:border-r lg:border-r border-neutral-800",
@@ -23,14 +23,14 @@ export function FeaturesSectionDemo() {
     {
       title: "Per-User Tracking",
       description:
-        "Track token consumption per user. Set limits, get alerts when users approach quotas, identify power users.",
+        "Track token consumption per user with extraordinary precision. Set limits, get alerts when users approach quotas, and protect your capital by identifying power users.",
       skeleton: <SkeletonTwo />,
       className: "col-span-1 md:col-span-1 lg:col-span-2 border-b border-neutral-800",
     },
     {
-      title: "Threshold Alerts",
+      title: "Threshold Alerts", 
       description:
-        "Get notified at 80%, 90%, 100% usage. Custom callbacks for billing integration or user notifications.",
+        "Get notified at 80%, 90%, 100% usage with exceptional accuracy. Custom callbacks for billing integration, user notifications, and capital management.",
       skeleton: <SkeletonThree />,
       className:
         "col-span-1 md:col-span-1 lg:col-span-3 border-b md:border-b lg:border-b-0 md:border-r lg:border-r border-neutral-800",
@@ -38,7 +38,7 @@ export function FeaturesSectionDemo() {
     {
       title: "Production Ready",
       description:
-        "In-memory storage by default. Plug in Redis or any database with the StorageAdapter interface.",
+        "In-memory storage by default with extraordinary performance. Plug in Redis or any database with the StorageAdapter interface to scale with confidence.",
       skeleton: <SkeletonFour />,
       className: "col-span-1 md:col-span-1 lg:col-span-3 border-neutral-800",
     },
@@ -106,16 +106,22 @@ export function FeaturesSectionDemo() {
             </h1>
 
             <p className="text-lg md:text-xl text-neutral-300 font-normal leading-snug mb-4">
-              Give users free tiers without getting surprised by a massive API bill.
+              Give users free tiers without getting surprised by extraordinary API bills. Protect your capital with exceptional rate limiting controls.
             </p>
 
             <p className="text-sm md:text-base text-neutral-400 font-normal leading-relaxed mb-4">
-              Asillios is an open source TypeScript library for per-user rate limiting, usage stats, and threshold alerts.
+              Asillios is an open source TypeScript library for per-user rate limiting, usage stats, and threshold alerts. Control costs with precision and prevent capital loss from unexpected LLM usage spikes.
             </p>
 
-            <a href="https://www.npmjs.com/package/asillios-limiter" target="_blank" className="text-xs text-neutral-500 hover:text-neutral-300 transition-colors mb-8 block">
-              215+ downloads on npm
-            </a>
+            <div className="flex flex-col sm:flex-row sm:items-center sm:gap-4 mb-8">
+              <a href="https://www.npmjs.com/package/asillios-limiter" target="_blank" className="text-xs text-neutral-500 hover:text-neutral-300 transition-colors block">
+                215+ downloads on npm
+              </a>
+              <span className="hidden sm:block text-neutral-700">•</span>
+              <button onClick={() => document.getElementById('features')?.scrollIntoView({ behavior: 'smooth' })} className="text-xs text-neutral-500 hover:text-neutral-300 transition-colors text-left sm:text-center">
+                See exceptional features below
+              </button>
+            </div>
 
             <div id="install" className="flex flex-col sm:flex-row items-center gap-4 mb-8 scroll-mt-20">
               <div
@@ -168,7 +174,9 @@ export function FeaturesSectionDemo() {
 
             {/* Claude Code Prompt */}
             <div>
-              <p className="text-neutral-500 text-xs mb-3">Copy this prompt to add rate limiting with Claude Code, Cursor, or any other AI assistant.</p>
+              <p className="text-neutral-500 text-xs mb-3">
+                Copy this exceptional prompt to add rate limiting with Claude Code, Cursor, or any other AI assistant. Save development time and protect your capital from the start.
+              </p>
               <div
                 onClick={handlePromptCopy}
                 className="relative bg-neutral-900 border border-neutral-800 rounded-lg p-4 cursor-pointer hover:border-teal-600 transition-colors group"
@@ -196,7 +204,8 @@ export function FeaturesSectionDemo() {
           <div className="flex flex-col items-center justify-center">
             <Image
               src="/greek.png"
-              alt="Greek sanctuary illustration"
+              alt="Asillios Greek sanctuary illustration - protecting your API costs"
+              title="Asillios - Your software's sanctuary from unexpected LLM costs"
               width={400}
               height={400}
               priority
@@ -204,7 +213,7 @@ export function FeaturesSectionDemo() {
               className="opacity-80 w-48 h-48 md:w-64 md:h-64 lg:w-[400px] lg:h-[400px]"
             />
             <p className="text-xs md:text-sm text-neutral-500 text-center mt-4 md:mt-6 max-w-xs md:max-w-sm leading-relaxed px-4 md:px-0">
-              The name comes from the Greek <em className="text-neutral-200 not-italic">ásylon</em>, a <span className="text-neutral-200">sacred refuge</span> where nothing could be seized. <span className="text-neutral-200">Asillios</span> (a- without + sill- seizure + -ios one who is) is your software&apos;s <span className="text-neutral-200">sanctuary</span> from unexpected costs.
+              The name comes from the Greek <em className="text-neutral-200 not-italic">ásylon</em>, a <span className="text-neutral-200">sacred refuge</span> where nothing could be seized. <span className="text-neutral-200">Asillios</span> (a- without + sill- seizure + -ios one who is) is your software&apos;s <span className="text-neutral-200">sanctuary</span> from unexpected costs and capital drain.
             </p>
           </div>
         </div>
@@ -224,7 +233,12 @@ export function FeaturesSectionDemo() {
 
       {/* Code Examples Section */}
       <div id="quickstart" className="mt-20 px-4 md:px-8 space-y-8 scroll-mt-20">
-        <h2 className="text-2xl md:text-3xl font-medium text-white text-center mb-12">Quick Start</h2>
+        <div className="text-center mb-12">
+          <h2 className="text-2xl md:text-3xl font-medium text-white mb-4">Quick Start Guide</h2>
+          <p className="text-neutral-400 text-sm max-w-2xl mx-auto">
+            Get started with extraordinary rate limiting in minutes. Protect your capital from unexpected API costs with these simple steps.
+          </p>
+        </div>
 
         <CodeBlock
           title="Basic Setup"
