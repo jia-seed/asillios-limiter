@@ -187,7 +187,8 @@ export default function Sidebar({ isOpen, onToggle }: SidebarProps) {
               >
                 <img
                   src="https://img.shields.io/github/license/audgeviolin07/asillios-limiter?style=flat&color=0d9488"
-                  alt="MIT License"
+                  alt="Asillios MIT License badge - open source rate limiting library"
+                  title="MIT Licensed - Free to use with commercial applications"
                   className="h-5"
                 />
               </a>
