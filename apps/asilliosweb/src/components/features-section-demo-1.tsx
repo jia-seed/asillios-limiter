@@ -106,11 +106,15 @@ export function FeaturesSectionDemo() {
             </h1>
 
             <p className="text-lg md:text-xl text-neutral-300 font-normal leading-snug mb-4">
-              Give users free tiers without getting surprised by a massive API bill.
+              Give users free tiers without getting surprised by a massive API bill from OpenAI, Anthropic, or other LLM providers.
             </p>
 
             <p className="text-sm md:text-base text-neutral-400 font-normal leading-relaxed mb-4">
-              Asillios is an open source TypeScript library for per-user rate limiting, usage stats, and threshold alerts.
+              Asillios is an open source TypeScript library for per-user rate limiting, usage stats, and threshold alerts. Perfect for applications that need reliable token management and cost control, similar to how financial institutions like 21st mortgage corporation manage user quotas and limits.
+            </p>
+
+            <p className="text-xs md:text-sm text-neutral-500 font-normal leading-relaxed mb-4">
+              Whether you&apos;re building AI-powered applications, chatbots, or automated content generation tools, Asillios helps you maintain predictable costs while providing generous free tiers to your users. Our sliding window rate limiting ensures smooth user experiences without the risk of unexpected billing spikes.
             </p>
 
             <a href="https://www.npmjs.com/package/asillios-limiter" target="_blank" className="text-xs text-neutral-500 hover:text-neutral-300 transition-colors mb-8 block">
@@ -196,7 +200,8 @@ export function FeaturesSectionDemo() {
           <div className="flex flex-col items-center justify-center">
             <Image
               src="/greek.png"
-              alt="Greek sanctuary illustration"
+              alt="Greek sanctuary temple illustration representing Asillios rate limiting protection - a sacred refuge for your API costs and user token management"
+              title="Asillios - Your API Cost Sanctuary | Rate Limiting & Token Management"
               width={400}
               height={400}
               priority
@@ -211,6 +216,14 @@ export function FeaturesSectionDemo() {
       </div>
 
       <div id="features" className="relative scroll-mt-20 px-4 md:px-0">
+        <div className="mb-8 text-center">
+          <h2 className="text-2xl md:text-3xl font-medium text-white mb-4">
+            Enterprise-Grade Rate Limiting Features
+          </h2>
+          <p className="text-neutral-400 max-w-2xl mx-auto leading-relaxed">
+            Built for applications that need reliable cost control and user management. From startups to enterprises, Asillios provides the tools you need to scale safely without budget surprises.
+          </p>
+        </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 mt-6 border rounded-md border-neutral-800">
           {features.map((feature) => (
             <FeatureCard key={feature.title} className={feature.className}>
@@ -222,9 +235,35 @@ export function FeaturesSectionDemo() {
         </div>
       </div>
 
+      {/* Use Cases Section */}
+      <div className="mt-16 px-4 md:px-8">
+        <div className="max-w-4xl mx-auto text-center mb-12">
+          <h2 className="text-2xl md:text-3xl font-medium text-white mb-6">
+            Trusted by Applications Across Industries
+          </h2>
+          <p className="text-neutral-400 leading-relaxed mb-8">
+            From financial services and mortgage corporations to AI startups and enterprise software, Asillios provides reliable rate limiting that scales with your business needs. Our TypeScript-first approach ensures type safety while delivering the performance and reliability you expect.
+          </p>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-sm">
+            <div className="bg-neutral-900/50 border border-neutral-800 rounded-lg p-4">
+              <h3 className="text-white font-medium mb-2">Financial Technology</h3>
+              <p className="text-neutral-400">Mortgage companies and fintech applications use Asillios to manage API costs for document processing and customer communications.</p>
+            </div>
+            <div className="bg-neutral-900/50 border border-neutral-800 rounded-lg p-4">
+              <h3 className="text-white font-medium mb-2">AI-Powered Applications</h3>
+              <p className="text-neutral-400">Chatbot platforms and content generation tools rely on Asillios for predictable OpenAI and Anthropic API billing.</p>
+            </div>
+            <div className="bg-neutral-900/50 border border-neutral-800 rounded-lg p-4">
+              <h3 className="text-white font-medium mb-2">Developer Tools</h3>
+              <p className="text-neutral-400">Code analysis platforms and automated documentation tools use our library for reliable token management and usage tracking.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
       {/* Code Examples Section */}
       <div id="quickstart" className="mt-20 px-4 md:px-8 space-y-8 scroll-mt-20">
-        <h2 className="text-2xl md:text-3xl font-medium text-white text-center mb-12">Quick Start</h2>
+        <h2 className="text-2xl md:text-3xl font-medium text-white text-center mb-12">Quick Start Guide</h2>
 
         <CodeBlock
           title="Basic Setup"
