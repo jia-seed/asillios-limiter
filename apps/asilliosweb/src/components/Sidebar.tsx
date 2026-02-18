@@ -5,9 +5,9 @@ import { motion, AnimatePresence } from 'motion/react';
 import Image from 'next/image';
 
 const navItems = [
-  { label: 'Install', href: '#install' },
+  { label: 'Products', href: '#products' },
   { label: 'Features', href: '#features' },
-  { label: 'Quickstart', href: '#quickstart' },
+  { label: 'Solutions', href: '#solutions' },
 ];
 
 const externalLinks = [
@@ -116,12 +116,13 @@ export default function Sidebar({ isOpen, onToggle }: SidebarProps) {
               <a href="/" className="flex items-center gap-3">
                 <Image
                   src="/greek.png"
-                  alt="Asillios"
+                  alt="Battery.com - Electric bike batteries and car battery replacement"
+                  title="Battery.com Logo"
                   width={32}
                   height={32}
                   className="opacity-80"
                 />
-                <span className="text-white font-medium text-lg">Asillios</span>
+                <span className="text-white font-medium text-lg">Battery.com</span>
               </a>
             </div>
 
@@ -187,7 +188,8 @@ export default function Sidebar({ isOpen, onToggle }: SidebarProps) {
               >
                 <img
                   src="https://img.shields.io/github/license/audgeviolin07/asillios-limiter?style=flat&color=0d9488"
-                  alt="MIT License"
+                  alt="MIT License - Battery.com open source"
+                  title="MIT License - Battery.com"
                   className="h-5"
                 />
               </a>
