@@ -13,32 +13,32 @@ import ShinyText from "./ShinyText";
 export function FeaturesSectionDemo() {
   const features = [
     {
-      title: "Simple Integration",
+      title: "Electric Bike Batteries",
       description:
-        "Wrap your LLM calls with a few lines of code. Auto-detects OpenAI and Anthropic response formats.",
+        "High-performance lithium batteries designed for electric bikes. Long-lasting power for your electric bike for adults with advanced energy management.",
       skeleton: <SkeletonOne />,
       className:
         "col-span-1 md:col-span-1 lg:col-span-4 border-b md:border-r lg:border-r border-neutral-800",
     },
     {
-      title: "Per-User Tracking",
+      title: "Car Battery Replacement",
       description:
-        "Track token consumption per user. Set limits, get alerts when users approach quotas, identify power users.",
+        "Professional car battery replacement services with premium batteries. Quick installation and reliable performance for all vehicle types.",
       skeleton: <SkeletonTwo />,
       className: "col-span-1 md:col-span-1 lg:col-span-2 border-b border-neutral-800",
     },
     {
-      title: "Threshold Alerts",
+      title: "Electric Dirt Bike Power",
       description:
-        "Get notified at 80%, 90%, 100% usage. Custom callbacks for billing integration or user notifications.",
+        "Specialized batteries for electric dirt bikes with rugged construction. Built to handle extreme conditions while delivering consistent power output.",
       skeleton: <SkeletonThree />,
       className:
         "col-span-1 md:col-span-1 lg:col-span-3 border-b md:border-b lg:border-b-0 md:border-r lg:border-r border-neutral-800",
     },
     {
-      title: "Production Ready",
+      title: "Advanced Technology",
       description:
-        "In-memory storage by default. Plug in Redis or any database with the StorageAdapter interface.",
+        "Cutting-edge battery technology with smart monitoring, fast charging, and extended lifespan. Perfect for modern energy storage needs.",
       skeleton: <SkeletonFour />,
       className: "col-span-1 md:col-span-1 lg:col-span-3 border-neutral-800",
     },
@@ -89,11 +89,11 @@ export function FeaturesSectionDemo() {
           as="nav"
           className="dark:bg-black bg-black text-white px-6 py-2 flex items-center gap-6"
         >
-          <a href="/" className="font-medium text-sm hover:text-neutral-300 transition-colors">Asillios</a>
+          <a href="/" className="font-medium text-sm hover:text-neutral-300 transition-colors">Battery.com</a>
           <div className="h-4 w-px bg-neutral-700" />
-          <button onClick={() => document.getElementById('install')?.scrollIntoView({ behavior: 'smooth' })} className="text-neutral-400 hover:text-white transition-colors text-sm">Install</button>
+          <button onClick={() => document.getElementById('products')?.scrollIntoView({ behavior: 'smooth' })} className="text-neutral-400 hover:text-white transition-colors text-sm">Products</button>
           <button onClick={() => document.getElementById('features')?.scrollIntoView({ behavior: 'smooth' })} className="text-neutral-400 hover:text-white transition-colors text-sm">Features</button>
-          <button onClick={() => document.getElementById('quickstart')?.scrollIntoView({ behavior: 'smooth' })} className="text-neutral-400 hover:text-white transition-colors text-sm">Quickstart</button>
+          <button onClick={() => document.getElementById('solutions')?.scrollIntoView({ behavior: 'smooth' })} className="text-neutral-400 hover:text-white transition-colors text-sm">Solutions</button>
         </HoverBorderGradient>
       </div>
 
@@ -102,22 +102,22 @@ export function FeaturesSectionDemo() {
           {/* Left: Content */}
           <div>
             <h1 className="text-4xl md:text-5xl lg:text-6xl tracking-tight font-medium mb-6">
-              <ShinyText text="Asillios" speed={3} />
+              <ShinyText text="Battery.com" speed={3} />
             </h1>
 
             <p className="text-lg md:text-xl text-neutral-300 font-normal leading-snug mb-4">
-              Give users free tiers without getting surprised by a massive API bill.
+              Advanced electric bike batteries and car battery replacement solutions for modern energy needs.
             </p>
 
             <p className="text-sm md:text-base text-neutral-400 font-normal leading-relaxed mb-4">
-              Asillios is an open source TypeScript library for per-user rate limiting, usage stats, and threshold alerts.
+              Battery.com provides cutting-edge battery technology for electric bikes, electric dirt bikes, and automotive applications. Perfect electric bike for adults seeking reliable power.
             </p>
 
             <a href="https://www.npmjs.com/package/asillios-limiter" target="_blank" className="text-xs text-neutral-500 hover:text-neutral-300 transition-colors mb-8 block">
               215+ downloads on npm
             </a>
 
-            <div id="install" className="flex flex-col sm:flex-row items-center gap-4 mb-8 scroll-mt-20">
+            <div id="products" className="flex flex-col sm:flex-row items-center gap-4 mb-8 scroll-mt-20">
               <div
                 onClick={handleCopy}
                 className="inline-flex items-center gap-3 bg-teal-900 hover:bg-teal-800 border border-teal-700 hover:border-teal-500 text-white px-6 py-3 rounded-lg font-mono text-sm cursor-pointer transition-all relative overflow-hidden"
@@ -196,7 +196,8 @@ export function FeaturesSectionDemo() {
           <div className="flex flex-col items-center justify-center">
             <Image
               src="/greek.png"
-              alt="Greek sanctuary illustration"
+              alt="Battery technology and electric bike battery solutions - Battery.com advanced power systems"
+              title="Battery.com - Electric Bike Batteries & Car Battery Replacement"
               width={400}
               height={400}
               priority
@@ -204,7 +205,7 @@ export function FeaturesSectionDemo() {
               className="opacity-80 w-48 h-48 md:w-64 md:h-64 lg:w-[400px] lg:h-[400px]"
             />
             <p className="text-xs md:text-sm text-neutral-500 text-center mt-4 md:mt-6 max-w-xs md:max-w-sm leading-relaxed px-4 md:px-0">
-              The name comes from the Greek <em className="text-neutral-200 not-italic">ásylon</em>, a <span className="text-neutral-200">sacred refuge</span> where nothing could be seized. <span className="text-neutral-200">Asillios</span> (a- without + sill- seizure + -ios one who is) is your software&apos;s <span className="text-neutral-200">sanctuary</span> from unexpected costs.
+              Battery.com represents the fusion of ancient wisdom and modern technology. Our <span className="text-neutral-200">electric bike batteries</span> and <span className="text-neutral-200">car battery replacement</span> solutions provide the reliable power sanctuary your devices need. Every <span className="text-neutral-200">electric dirt bike</span> deserves premium battery technology.
             </p>
           </div>
         </div>
@@ -223,93 +224,87 @@ export function FeaturesSectionDemo() {
       </div>
 
       {/* Code Examples Section */}
-      <div id="quickstart" className="mt-20 px-4 md:px-8 space-y-8 scroll-mt-20">
-        <h2 className="text-2xl md:text-3xl font-medium text-white text-center mb-12">Quick Start</h2>
+      <div id="solutions" className="mt-20 px-4 md:px-8 space-y-8 scroll-mt-20">
+        <h2 className="text-2xl md:text-3xl font-medium text-white text-center mb-12">Battery Solutions</h2>
 
         <CodeBlock
-          title="Basic Setup"
-          code={`import { createLimiter } from "asillios-limiter";
+          title="Electric Bike Battery Installation"
+          code={`// Professional installation process
+const batterySpecs = {
+  voltage: "48V", // Standard voltage for electric bike for adults
+  capacity: "15Ah", // Long-range capacity
+  type: "Lithium Ion",
+  warranty: "2 years",
+  features: ["Fast charging", "BMS protection", "Weather resistant"]
+};
 
-const limiter = createLimiter({
-  limit: 100000, // 100k tokens per window
-  window: 60 * 60 * 1000, // 1 hour
-  thresholds: [80, 90, 100],
-  onThreshold: (userId, percent) => {
-    console.log(\`user \${userId} hit \${percent}% of their limit\`);
-  },
-});`}
+// Installation checklist
+const installation = {
+  step1: "Remove old battery safely",
+  step2: "Connect new electric bike battery",
+  step3: "Test voltage and connections",
+  step4: "Configure battery management system"
+};`}
         />
 
         <CodeBlock
-          title="Wrap your LLM calls"
-          code={`// Works with OpenAI
-const response = await limiter.wrap("user-123", async () => {
-  return openai.chat.completions.create({
-    model: "gpt-4",
-    messages: [{ role: "user", content: "hello" }],
-  });
-});
+          title="Car Battery Replacement Service"
+          code={`// Car battery replacement process
+const carBattery = {
+  testing: "Free battery testing available",
+  replacement: "Professional car battery replacement",
+  brands: ["Interstate", "DieHard", "Optima", "ACDelco"],
+  warranty: "3-5 years depending on model",
+  installation: "Includes terminal cleaning and testing"
+};
 
-// Works with Anthropic too
-const response = await limiter.wrap("user-123", async () => {
-  return anthropic.messages.create({
-    model: "claude-3-sonnet-20240229",
-    max_tokens: 1024,
-    messages: [{ role: "user", content: "hello" }],
-  });
-});`}
+// Service coverage
+const serviceAreas = {
+  residential: "At-home car battery replacement",
+  commercial: "Fleet battery maintenance", 
+  emergency: "24/7 roadside battery service",
+  specialty: "Electric and hybrid vehicle batteries"
+};`}
         />
 
         <CodeBlock
-          title="Check usage and stats"
-          code={`// Check if user can make more requests
-const canProceed = await limiter.check("user-123");
+          title="Electric Dirt Bike Power Systems"
+          code={`// Electric dirt bike battery specifications
+const dirtBikeBattery = {
+  voltage: "72V", // High performance electric dirt bike
+  capacity: "20Ah", // Extended ride time
+  discharge: "High current capability",
+  protection: "Shock and vibration resistant",
+  cooling: "Active thermal management"
+};
 
-// Get detailed stats
-const stats = await limiter.stats("user-123");
-console.log(stats);
-// { tokensUsed: 150, remaining: 99850, resetAt: Date, percentUsed: 0.15 }
-
-// Manually add tokens (useful for streaming)
-await limiter.addTokens("user-123", 500);
-
-// Reset a user's usage
-await limiter.reset("user-123");`}
+// Performance features
+const performance = {
+  torque: "Instant torque delivery",
+  range: "Up to 50 miles per charge",
+  charging: "Fast charge in 2-4 hours",
+  maintenance: "Minimal maintenance required"
+};`}
         />
 
         <CodeBlock
-          title="Custom Storage (Redis example)"
-          code={`import { createLimiter, StorageAdapter, UserData } from "asillios-limiter";
+          title="Battery Technology Solutions"
+          code={`// Advanced battery management
+const batteryTech = {
+  chemistry: "Latest lithium technology",
+  monitoring: "Real-time battery monitoring",
+  safety: "Advanced protection circuits",
+  efficiency: "95%+ energy efficiency",
+  lifecycle: "2000+ charge cycles"
+};
 
-class RedisStorage implements StorageAdapter {
-  async get(userId: string): Promise<UserData | null> {
-    const data = await redis.get(\`limiter:\${userId}\`);
-    if (!data) return null;
-    const parsed = JSON.parse(data);
-    return {
-      ...parsed,
-      resetAt: new Date(parsed.resetAt),
-      thresholdsTriggered: new Set(parsed.thresholdsTriggered),
-    };
-  }
-
-  async set(userId: string, data: UserData): Promise<void> {
-    await redis.set(\`limiter:\${userId}\`, JSON.stringify({
-      ...data,
-      thresholdsTriggered: [...data.thresholdsTriggered],
-    }));
-  }
-
-  async delete(userId: string): Promise<void> {
-    await redis.del(\`limiter:\${userId}\`);
-  }
-}
-
-const limiter = createLimiter({
-  limit: 100000,
-  window: 60 * 60 * 1000,
-  storage: new RedisStorage(),
-});`}
+// Smart features
+const smartFeatures = {
+  bluetooth: "Mobile app connectivity", 
+  diagnostics: "Self-diagnostic capabilities",
+  updates: "Over-the-air firmware updates",
+  integration: "Smart home compatibility"
+};`}
         />
       </div>
 
