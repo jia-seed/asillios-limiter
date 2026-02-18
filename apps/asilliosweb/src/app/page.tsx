@@ -10,12 +10,12 @@ export default function Home() {
   return (
     <div className="dark bg-black min-h-screen">
       <Sidebar isOpen={sidebarOpen} onToggle={() => setSidebarOpen(!sidebarOpen)} />
-      <div
+      <main
         className="transition-all duration-300 ease-out"
         style={{ marginLeft: sidebarOpen ? '14rem' : '0' }}
       >
         <FeaturesSectionDemo />
-      </div>
+      </main>
     </div>
   );
 }

@@ -5,7 +5,7 @@ import { cn } from "@/lib/utils";
 import createGlobe from "cobe";
 import { useEffect, useRef, useState } from "react";
 import { motion } from "motion/react";
-import { Highlight, themes } from "prism-react-renderer";
+
 import { HoverBorderGradient } from "./ui/hover-border-gradient";
 import Image from "next/image";
 import ShinyText from "./ShinyText";
@@ -13,72 +13,37 @@ import ShinyText from "./ShinyText";
 export function FeaturesSectionDemo() {
   const features = [
     {
-      title: "Simple Integration",
+      title: "Premium LED Light Bulbs",
       description:
-        "Wrap your LLM calls with a few lines of code. Auto-detects OpenAI and Anthropic response formats.",
+        "Energy-efficient LED light bulbs with up to 80% less energy consumption. Long-lasting bulbs with 25,000+ hour lifespan and instant brightness.",
       skeleton: <SkeletonOne />,
       className:
         "col-span-1 md:col-span-1 lg:col-span-4 border-b md:border-r lg:border-r border-neutral-800",
     },
     {
-      title: "Per-User Tracking",
+      title: "LED Light Strips",
       description:
-        "Track token consumption per user. Set limits, get alerts when users approach quotas, identify power users.",
+        "Flexible LED light strips perfect for accent lighting, under-cabinet installation, and decorative applications with customizable lengths.",
       skeleton: <SkeletonTwo />,
       className: "col-span-1 md:col-span-1 lg:col-span-2 border-b border-neutral-800",
     },
     {
-      title: "Threshold Alerts",
+      title: "Commercial Shop Lights",
       description:
-        "Get notified at 80%, 90%, 100% usage. Custom callbacks for billing integration or user notifications.",
+        "High-performance LED shop lights for warehouses, garages, and commercial spaces. Bright, durable lighting that reduces operating costs.",
       skeleton: <SkeletonThree />,
       className:
         "col-span-1 md:col-span-1 lg:col-span-3 border-b md:border-b lg:border-b-0 md:border-r lg:border-r border-neutral-800",
     },
     {
-      title: "Production Ready",
+      title: "Smart LED Solutions",
       description:
-        "In-memory storage by default. Plug in Redis or any database with the StorageAdapter interface.",
+        "Wi-Fi enabled smart LED bulbs with app control, dimming, color changing, and voice assistant compatibility for modern homes.",
       skeleton: <SkeletonFour />,
       className: "col-span-1 md:col-span-1 lg:col-span-3 border-neutral-800",
     },
   ];
-  const [copied, setCopied] = React.useState(false);
-  const [promptCopied, setPromptCopied] = React.useState(false);
-  const [starCount, setStarCount] = React.useState<number | null>(null);
 
-  // Fetch GitHub star count
-  useEffect(() => {
-    async function fetchStars() {
-      try {
-        const response = await fetch('/api/github/stars', { cache: 'no-store' });
-        const data = await response.json();
-        if (data.stars !== null) {
-          setStarCount(data.stars);
-        }
-      } catch (error) {
-        console.error('Failed to fetch star count:', error);
-      }
-    }
-    fetchStars();
-    // Refresh star count every 30 seconds
-    const interval = setInterval(fetchStars, 30000);
-    return () => clearInterval(interval);
-  }, []);
-
-  const handleCopy = () => {
-    navigator.clipboard.writeText('npm install asillios-limiter');
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
-  };
-
-  const claudePrompt = `Add rate limiting to my app using asillios-limiter. Install it (ex. npm install asillios-limiter) Use limiter.wrap() to track token usage from OpenAI or Anthropic. Docs at asillios.com.`;
-
-  const handlePromptCopy = () => {
-    navigator.clipboard.writeText(claudePrompt);
-    setPromptCopied(true);
-    setTimeout(() => setPromptCopied(false), 2000);
-  };
 
   return (
     <div className="relative z-20 max-w-7xl mx-auto pb-20">
@@ -89,11 +54,11 @@ export function FeaturesSectionDemo() {
           as="nav"
           className="dark:bg-black bg-black text-white px-6 py-2 flex items-center gap-6"
         >
-          <a href="/" className="font-medium text-sm hover:text-neutral-300 transition-colors">Asillios</a>
+          <a href="/" className="font-medium text-sm hover:text-neutral-300 transition-colors">Shiplight</a>
           <div className="h-4 w-px bg-neutral-700" />
-          <button onClick={() => document.getElementById('install')?.scrollIntoView({ behavior: 'smooth' })} className="text-neutral-400 hover:text-white transition-colors text-sm">Install</button>
-          <button onClick={() => document.getElementById('features')?.scrollIntoView({ behavior: 'smooth' })} className="text-neutral-400 hover:text-white transition-colors text-sm">Features</button>
-          <button onClick={() => document.getElementById('quickstart')?.scrollIntoView({ behavior: 'smooth' })} className="text-neutral-400 hover:text-white transition-colors text-sm">Quickstart</button>
+          <a href="/led-light-bulbs" className="text-neutral-400 hover:text-white transition-colors text-sm">LED Bulbs</a>
+          <a href="/led-light-strips" className="text-neutral-400 hover:text-white transition-colors text-sm">LED Strips</a>
+          <a href="/shop-lights" className="text-neutral-400 hover:text-white transition-colors text-sm">Shop Lights</a>
         </HoverBorderGradient>
       </div>
 
@@ -102,101 +67,81 @@ export function FeaturesSectionDemo() {
           {/* Left: Content */}
           <div>
             <h1 className="text-4xl md:text-5xl lg:text-6xl tracking-tight font-medium mb-6">
-              <ShinyText text="Asillios" speed={3} />
+              <ShinyText text="Premium LED Lighting Solutions" speed={3} />
             </h1>
 
             <p className="text-lg md:text-xl text-neutral-300 font-normal leading-snug mb-4">
-              Give users free tiers without getting surprised by a massive API bill.
+              Discover energy-efficient LED light bulbs, versatile LED light strips, and powerful shop lights for every space.
             </p>
 
             <p className="text-sm md:text-base text-neutral-400 font-normal leading-relaxed mb-4">
-              Asillios is an open source TypeScript library for per-user rate limiting, usage stats, and threshold alerts.
+              Shiplight offers premium LED lighting solutions designed for maximum energy efficiency, longevity, and brilliant illumination across residential and commercial applications.
             </p>
 
-            <a href="https://www.npmjs.com/package/asillios-limiter" target="_blank" className="text-xs text-neutral-500 hover:text-neutral-300 transition-colors mb-8 block">
-              215+ downloads on npm
-            </a>
+            <div className="flex flex-wrap gap-2 mb-8">
+              <span className="text-xs bg-teal-900/50 text-teal-300 px-3 py-1 rounded-full border border-teal-700">Energy Efficient</span>
+              <span className="text-xs bg-teal-900/50 text-teal-300 px-3 py-1 rounded-full border border-teal-700">25,000+ Hour Lifespan</span>
+              <span className="text-xs bg-teal-900/50 text-teal-300 px-3 py-1 rounded-full border border-teal-700">Instant On</span>
+            </div>
 
-            <div id="install" className="flex flex-col sm:flex-row items-center gap-4 mb-8 scroll-mt-20">
-              <div
-                onClick={handleCopy}
-                className="inline-flex items-center gap-3 bg-teal-900 hover:bg-teal-800 border border-teal-700 hover:border-teal-500 text-white px-6 py-3 rounded-lg font-mono text-sm cursor-pointer transition-all relative overflow-hidden"
-                style={{
-                  backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E")`,
-                  backgroundBlendMode: 'overlay',
-                }}
+            <div id="shop" className="flex flex-col sm:flex-row items-center gap-4 mb-8 scroll-mt-20">
+              <HoverBorderGradient
+                containerClassName="rounded-full"
+                as="a"
+                href="/led-light-bulbs"
+                className="dark:bg-teal-900 bg-teal-900 text-white flex items-center space-x-2 px-6 py-3 hover:bg-teal-800"
               >
-                <span>npm install asillios-limiter</span>
-                <svg
-                  width="18"
-                  height="18"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  className="opacity-70"
-                >
-                  {copied ? (
-                    <path d="M20 6L9 17l-5-5" />
-                  ) : (
-                    <>
-                      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" />
-                      <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1" />
-                    </>
-                  )}
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <path d="M9 21H15M12 3C8.5 3 6 5.5 6 9C6 11 7 12.5 8 13.5C8.5 14 9 14.5 9 15V16C9 17 10 18 11 18H13C14 18 15 17 15 16V15C15 14.5 15.5 14 16 13.5C17 12.5 18 11 18 9C18 5.5 15.5 3 12 3Z"/>
                 </svg>
-              </div>
+                <span>Shop LED Bulbs</span>
+              </HoverBorderGradient>
 
               <HoverBorderGradient
                 containerClassName="rounded-full"
                 as="a"
-                href="https://github.com/audgeviolin07/asillios-limiter"
-                target="_blank"
+                href="/led-light-strips"
                 className="dark:bg-black bg-white text-black dark:text-white flex items-center space-x-2 px-6 py-3"
               >
-                <GitHubLogo />
-                <span>Star on GitHub</span>
-                {starCount !== null && (
-                  <span className="text-base font-medium">
-                    ⭐ {starCount}
-                  </span>
-                )}
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <path d="M3 12H21M3 6H21M3 18H21"/>
+                </svg>
+                <span>LED Strips</span>
               </HoverBorderGradient>
             </div>
 
-            {/* Claude Code Prompt */}
+            {/* LED Benefits */}
             <div>
-              <p className="text-neutral-500 text-xs mb-3">Copy this prompt to add rate limiting with Claude Code, Cursor, or any other AI assistant.</p>
-              <div
-                onClick={handlePromptCopy}
-                className="relative bg-neutral-900 border border-neutral-800 rounded-lg p-4 cursor-pointer hover:border-teal-600 transition-colors group"
-              >
-                <p className="text-neutral-400 text-sm pr-8 leading-relaxed">
-                  {claudePrompt}
-                </p>
-                <div className="absolute top-3 right-3 text-neutral-500 group-hover:text-white transition-colors">
-                  {promptCopied ? (
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                      <path d="M20 6L9 17l-5-5" />
-                    </svg>
-                  ) : (
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" />
-                      <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1" />
-                    </svg>
-                  )}
+              <p className="text-neutral-500 text-xs mb-3">Why choose LED lighting solutions?</p>
+              <div className="relative bg-neutral-900 border border-neutral-800 rounded-lg p-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm text-neutral-400">
+                  <div className="flex items-center gap-2">
+                    <span className="text-teal-400">✓</span>
+                    <span>Up to 80% energy savings</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <span className="text-teal-400">✓</span>
+                    <span>25,000+ hour lifespan</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <span className="text-teal-400">✓</span>
+                    <span>Instant brightness</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <span className="text-teal-400">✓</span>
+                    <span>Mercury-free & eco-friendly</span>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
 
-          {/* Right: Greek Image */}
+          {/* Right: LED Illustration */}
           <div className="flex flex-col items-center justify-center">
             <Image
               src="/greek.png"
-              alt="Greek sanctuary illustration"
+              alt="Premium LED lighting solutions showcase"
+              title="Shiplight LED Lighting Solutions"
               width={400}
               height={400}
               priority
@@ -204,7 +149,7 @@ export function FeaturesSectionDemo() {
               className="opacity-80 w-48 h-48 md:w-64 md:h-64 lg:w-[400px] lg:h-[400px]"
             />
             <p className="text-xs md:text-sm text-neutral-500 text-center mt-4 md:mt-6 max-w-xs md:max-w-sm leading-relaxed px-4 md:px-0">
-              The name comes from the Greek <em className="text-neutral-200 not-italic">ásylon</em>, a <span className="text-neutral-200">sacred refuge</span> where nothing could be seized. <span className="text-neutral-200">Asillios</span> (a- without + sill- seizure + -ios one who is) is your software&apos;s <span className="text-neutral-200">sanctuary</span> from unexpected costs.
+              <span className="text-neutral-200">Shiplight</span> illuminates spaces with premium <span className="text-neutral-200">LED technology</span>. From energy-efficient <a href="/led-light-bulbs" className="text-teal-400 hover:text-teal-300">LED light bulbs</a> to versatile <a href="/led-light-strips" className="text-teal-400 hover:text-teal-300">LED light strips</a> and powerful <a href="/shop-lights" className="text-teal-400 hover:text-teal-300">shop lights</a> - we brighten your world efficiently.
             </p>
           </div>
         </div>
@@ -222,94 +167,60 @@ export function FeaturesSectionDemo() {
         </div>
       </div>
 
-      {/* Code Examples Section */}
-      <div id="quickstart" className="mt-20 px-4 md:px-8 space-y-8 scroll-mt-20">
-        <h2 className="text-2xl md:text-3xl font-medium text-white text-center mb-12">Quick Start</h2>
+      {/* LED Product Categories Section */}
+      <div id="products" className="mt-20 px-4 md:px-8 space-y-8 scroll-mt-20">
+        <h2 className="text-2xl md:text-3xl font-medium text-white text-center mb-12">Explore Our LED Lighting Categories</h2>
 
-        <CodeBlock
-          title="Basic Setup"
-          code={`import { createLimiter } from "asillios-limiter";
-
-const limiter = createLimiter({
-  limit: 100000, // 100k tokens per window
-  window: 60 * 60 * 1000, // 1 hour
-  thresholds: [80, 90, 100],
-  onThreshold: (userId, percent) => {
-    console.log(\`user \${userId} hit \${percent}% of their limit\`);
-  },
-});`}
+        <ProductCard
+          title="LED Light Bulbs"
+          description="Premium LED light bulbs available in various wattages and color temperatures. Perfect for residential and commercial lighting needs."
+          features={[
+            "A19, A21, BR30, PAR38 bulb types",
+            "Dimmable options available", 
+            "2700K-6500K color temperatures",
+            "Energy Star certified models",
+            "25,000+ hour rated life"
+          ]}
+          link="/led-light-bulbs"
         />
 
-        <CodeBlock
-          title="Wrap your LLM calls"
-          code={`// Works with OpenAI
-const response = await limiter.wrap("user-123", async () => {
-  return openai.chat.completions.create({
-    model: "gpt-4",
-    messages: [{ role: "user", content: "hello" }],
-  });
-});
-
-// Works with Anthropic too
-const response = await limiter.wrap("user-123", async () => {
-  return anthropic.messages.create({
-    model: "claude-3-sonnet-20240229",
-    max_tokens: 1024,
-    messages: [{ role: "user", content: "hello" }],
-  });
-});`}
+        <ProductCard
+          title="LED Light Strips"
+          description="Flexible LED light strips for accent lighting, under-cabinet illumination, and decorative applications with easy installation."
+          features={[
+            "Cuttable every 3 inches",
+            "IP65 waterproof options",
+            "RGB and single-color variants", 
+            "Self-adhesive backing",
+            "Controller and app compatible"
+          ]}
+          link="/led-light-strips"
         />
 
-        <CodeBlock
-          title="Check usage and stats"
-          code={`// Check if user can make more requests
-const canProceed = await limiter.check("user-123");
-
-// Get detailed stats
-const stats = await limiter.stats("user-123");
-console.log(stats);
-// { tokensUsed: 150, remaining: 99850, resetAt: Date, percentUsed: 0.15 }
-
-// Manually add tokens (useful for streaming)
-await limiter.addTokens("user-123", 500);
-
-// Reset a user's usage
-await limiter.reset("user-123");`}
+        <ProductCard
+          title="Commercial Shop Lights"
+          description="High-performance LED shop lights designed for warehouses, garages, workshops, and industrial applications."
+          features={[
+            "Linkable design for continuous runs",
+            "5000K daylight color temperature",
+            "Pull chain or wall switch options",
+            "Easy surface or chain mounting",
+            "50,000+ hour commercial rated"
+          ]}
+          link="/shop-lights"
         />
 
-        <CodeBlock
-          title="Custom Storage (Redis example)"
-          code={`import { createLimiter, StorageAdapter, UserData } from "asillios-limiter";
-
-class RedisStorage implements StorageAdapter {
-  async get(userId: string): Promise<UserData | null> {
-    const data = await redis.get(\`limiter:\${userId}\`);
-    if (!data) return null;
-    const parsed = JSON.parse(data);
-    return {
-      ...parsed,
-      resetAt: new Date(parsed.resetAt),
-      thresholdsTriggered: new Set(parsed.thresholdsTriggered),
-    };
-  }
-
-  async set(userId: string, data: UserData): Promise<void> {
-    await redis.set(\`limiter:\${userId}\`, JSON.stringify({
-      ...data,
-      thresholdsTriggered: [...data.thresholdsTriggered],
-    }));
-  }
-
-  async delete(userId: string): Promise<void> {
-    await redis.del(\`limiter:\${userId}\`);
-  }
-}
-
-const limiter = createLimiter({
-  limit: 100000,
-  window: 60 * 60 * 1000,
-  storage: new RedisStorage(),
-});`}
+        <ProductCard
+          title="Smart LED Solutions"
+          description="WiFi-enabled smart LED bulbs with app control, voice assistant compatibility, and advanced scheduling features."
+          features={[
+            "Works with Alexa, Google, Siri",
+            "16 million color options",
+            "Sunrise/sunset scheduling",
+            "Music sync capabilities",
+            "Energy monitoring features"
+          ]}
+          link="/smart-led"
         />
       </div>
 
@@ -317,55 +228,37 @@ const limiter = createLimiter({
   );
 }
 
-const CodeBlock = ({ title, code }: { title: string; code: string }) => {
-  const [copied, setCopied] = useState(false);
-
-  const handleCopy = () => {
-    navigator.clipboard.writeText(code);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
-  };
-
+const ProductCard = ({ title, description, features, link }: { 
+  title: string; 
+  description: string; 
+  features: string[];
+  link: string;
+}) => {
   return (
     <div className="rounded-lg overflow-hidden border border-neutral-800 bg-[#0d1117]">
       <div className="flex items-center justify-between px-4 py-2 bg-[#161b22] border-b border-neutral-800">
-        <span className="text-sm text-neutral-400">{title}</span>
-        <button
-          onClick={handleCopy}
-          className="flex items-center gap-2 text-xs text-neutral-400 hover:text-white transition-colors px-2 py-1 rounded hover:bg-teal-700/30"
+        <span className="text-sm text-white font-medium">{title}</span>
+        <a 
+          href={link}
+          className="flex items-center gap-2 text-xs text-teal-400 hover:text-teal-300 transition-colors px-2 py-1 rounded hover:bg-teal-700/30"
         >
-          {copied ? (
-            <>
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <path d="M20 6L9 17l-5-5" />
-              </svg>
-              Copied!
-            </>
-          ) : (
-            <>
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <rect x="9" y="9" width="13" height="13" rx="2" ry="2" />
-                <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1" />
-              </svg>
-              Copy
-            </>
-          )}
-        </button>
+          View Products
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+            <path d="M7 17L17 7M17 7H7M17 7V17" />
+          </svg>
+        </a>
       </div>
-      <Highlight theme={themes.nightOwl} code={code} language="typescript">
-        {({ style, tokens, getLineProps, getTokenProps }) => (
-          <pre className="p-4 overflow-x-auto text-sm" style={{ ...style, background: 'transparent' }}>
-            {tokens.map((line, i) => (
-              <div key={i} {...getLineProps({ line })}>
-                <span className="inline-block w-8 text-neutral-600 select-none text-right mr-4">{i + 1}</span>
-                {line.map((token, key) => (
-                  <span key={key} {...getTokenProps({ token })} />
-                ))}
-              </div>
-            ))}
-          </pre>
-        )}
-      </Highlight>
+      <div className="p-4">
+        <p className="text-neutral-300 text-sm mb-4 leading-relaxed">{description}</p>
+        <ul className="space-y-2">
+          {features.map((feature, index) => (
+            <li key={index} className="flex items-start gap-2 text-sm text-neutral-400">
+              <span className="text-teal-400 mt-1">•</span>
+              <span>{feature}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
   );
 };
@@ -426,7 +319,7 @@ export const SkeletonOne = () => {
             style={{ width: `${progress}%` }}
           />
         </div>
-        <div className="text-neutral-600 text-xs mt-2">tokens used this window</div>
+        <div className="text-neutral-600 text-xs mt-2">energy savings with LED</div>
       </div>
       <div className="absolute bottom-0 z-40 inset-x-0 h-20 bg-gradient-to-t from-black to-transparent w-full pointer-events-none" />
     </div>
@@ -434,28 +327,28 @@ export const SkeletonOne = () => {
 };
 
 export const SkeletonTwo = () => {
-  const users = [
-    { id: 'user-a', usage: 85, shade: 'bg-teal-500' },
-    { id: 'user-b', usage: 42, shade: 'bg-teal-700' },
-    { id: 'user-c', usage: 91, shade: 'bg-teal-400' },
-    { id: 'user-d', usage: 23, shade: 'bg-teal-800' },
+  const strips = [
+    { id: '16ft', brightness: 85, shade: 'bg-teal-500' },
+    { id: '32ft', brightness: 42, shade: 'bg-teal-700' },
+    { id: '50ft', brightness: 91, shade: 'bg-teal-400' },
+    { id: '65ft', brightness: 23, shade: 'bg-teal-800' },
   ];
 
   return (
     <div className="relative flex flex-col p-4 h-full overflow-hidden">
       <div className="space-y-3">
-        {users.map((user) => (
-          <div key={user.id} className="flex items-center gap-3">
-            <span className="text-neutral-500 text-xs font-mono w-16">{user.id}</span>
+        {strips.map((strip) => (
+          <div key={strip.id} className="flex items-center gap-3">
+            <span className="text-neutral-500 text-xs font-mono w-16">{strip.id}</span>
             <div className="flex-1 h-2 bg-neutral-800 rounded-full overflow-hidden">
               <motion.div
-                className={cn("h-full rounded-full", user.shade)}
+                className={cn("h-full rounded-full", strip.shade)}
                 initial={{ width: 0 }}
-                animate={{ width: `${user.usage}%` }}
+                animate={{ width: `${strip.brightness}%` }}
                 transition={{ duration: 1, delay: 0.2 }}
               />
             </div>
-            <span className="text-neutral-400 text-xs font-mono w-8">{user.usage}%</span>
+            <span className="text-neutral-400 text-xs font-mono w-8">{strip.brightness}%</span>
           </div>
         ))}
       </div>
@@ -494,11 +387,11 @@ export const SkeletonThree = () => {
             animate={{ opacity: 1, y: 0 }}
             className={cn("text-xs font-mono px-3 py-2 rounded border", alert.shade)}
           >
-            → user-123 reached {alert.pct} of limit
+            → LED {alert.pct} brightness activated
           </motion.div>
         ))}
         {alerts.length === 0 && (
-          <div className="text-neutral-600 text-xs">Waiting for threshold events...</div>
+          <div className="text-neutral-600 text-xs">Waiting for brightness changes...</div>
         )}
       </div>
       <div className="absolute bottom-0 z-40 inset-x-0 h-10 bg-gradient-to-t from-black to-transparent w-full pointer-events-none" />
