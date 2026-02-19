@@ -13,6 +13,13 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  compress: true,
+  poweredByHeader: false,
+  generateEtags: true,
+  trailingSlash: false,
+  experimental: {
+    optimizePackageImports: ['lucide-react', '@tabler/icons-react'],
+  },
 };
 
 export default nextConfig;
