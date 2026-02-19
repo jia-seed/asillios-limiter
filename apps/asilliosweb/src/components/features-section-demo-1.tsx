@@ -15,7 +15,7 @@ export function FeaturesSectionDemo() {
     {
       title: "Simple Integration",
       description:
-        "Wrap your LLM calls with a few lines of code. Auto-detects OpenAI and Anthropic response formats.",
+        "Wrap your LLM calls with minimal code. Auto-detects OpenAI and Anthropic formats.",
       skeleton: <SkeletonOne />,
       className:
         "col-span-1 md:col-span-1 lg:col-span-4 border-b md:border-r lg:border-r border-neutral-800",
@@ -23,22 +23,22 @@ export function FeaturesSectionDemo() {
     {
       title: "Per-User Tracking",
       description:
-        "Track token consumption per user. Set limits, get alerts when users approach quotas, identify power users.",
+        "Scale monitoring per user. Set limits, get alerts, identify usage patterns.",
       skeleton: <SkeletonTwo />,
       className: "col-span-1 md:col-span-1 lg:col-span-2 border-b border-neutral-800",
     },
     {
-      title: "Threshold Alerts",
+      title: "Smart Alerts",
       description:
-        "Get notified at 80%, 90%, 100% usage. Custom callbacks for billing integration or user notifications.",
+        "Get notified at 80%, 90%, 100% usage. Custom callbacks for billing integration.",
       skeleton: <SkeletonThree />,
       className:
         "col-span-1 md:col-span-1 lg:col-span-3 border-b md:border-b lg:border-b-0 md:border-r lg:border-r border-neutral-800",
     },
     {
-      title: "Production Ready",
+      title: "Scale Ready",
       description:
-        "In-memory storage by default. Plug in Redis or any database with the StorageAdapter interface.",
+        "Production-ready with Redis support. Scale from prototype to enterprise.",
       skeleton: <SkeletonFour />,
       className: "col-span-1 md:col-span-1 lg:col-span-3 border-neutral-800",
     },
@@ -72,7 +72,7 @@ export function FeaturesSectionDemo() {
     setTimeout(() => setCopied(false), 2000);
   };
 
-  const claudePrompt = `Add rate limiting to my app using asillios-limiter. Install it (ex. npm install asillios-limiter) Use limiter.wrap() to track token usage from OpenAI or Anthropic. Docs at asillios.com.`;
+  const claudePrompt = `Add rate limiting to my app using asillios-limiter. Install it (ex. npm install asillios-limiter) Use limiter.wrap() to track token usage from OpenAI or Anthropic. Scale safely. Docs at asillios.com.`;
 
   const handlePromptCopy = () => {
     navigator.clipboard.writeText(claudePrompt);
@@ -106,11 +106,11 @@ export function FeaturesSectionDemo() {
             </h1>
 
             <p className="text-lg md:text-xl text-neutral-300 font-normal leading-snug mb-4">
-              Give users free tiers without getting surprised by a massive API bill.
+              Scale your LLM app safely - no surprise API bills.
             </p>
 
             <p className="text-sm md:text-base text-neutral-400 font-normal leading-relaxed mb-4">
-              Asillios is an open source TypeScript library for per-user rate limiting, usage stats, and threshold alerts.
+              Open source TypeScript library for per-user rate limiting and cost control. Scale with confidence.
             </p>
 
             <a href="https://www.npmjs.com/package/asillios-limiter" target="_blank" className="text-xs text-neutral-500 hover:text-neutral-300 transition-colors mb-8 block">
@@ -196,7 +196,7 @@ export function FeaturesSectionDemo() {
           <div className="flex flex-col items-center justify-center">
             <Image
               src="/greek.png"
-              alt="Greek sanctuary illustration"
+              alt="Asillios sanctuary - scale your LLM applications safely without unexpected API costs"
               width={400}
               height={400}
               priority
@@ -204,13 +204,14 @@ export function FeaturesSectionDemo() {
               className="opacity-80 w-48 h-48 md:w-64 md:h-64 lg:w-[400px] lg:h-[400px]"
             />
             <p className="text-xs md:text-sm text-neutral-500 text-center mt-4 md:mt-6 max-w-xs md:max-w-sm leading-relaxed px-4 md:px-0">
-              The name comes from the Greek <em className="text-neutral-200 not-italic">ásylon</em>, a <span className="text-neutral-200">sacred refuge</span> where nothing could be seized. <span className="text-neutral-200">Asillios</span> (a- without + sill- seizure + -ios one who is) is your software&apos;s <span className="text-neutral-200">sanctuary</span> from unexpected costs.
+              From Greek <em className="text-neutral-200 not-italic">ásylon</em> - a <span className="text-neutral-200">sacred refuge</span>. <span className="text-neutral-200">Asillios</span> is your app&apos;s <span className="text-neutral-200">sanctuary</span> from unexpected API costs.
             </p>
           </div>
         </div>
       </div>
 
       <div id="features" className="relative scroll-mt-20 px-4 md:px-0">
+        <h2 className="text-2xl md:text-3xl font-medium text-white text-center mb-8">Core Features</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 mt-6 border rounded-md border-neutral-800">
           {features.map((feature) => (
             <FeatureCard key={feature.title} className={feature.className}>
@@ -224,7 +225,7 @@ export function FeaturesSectionDemo() {
 
       {/* Code Examples Section */}
       <div id="quickstart" className="mt-20 px-4 md:px-8 space-y-8 scroll-mt-20">
-        <h2 className="text-2xl md:text-3xl font-medium text-white text-center mb-12">Quick Start</h2>
+        <h2 className="text-2xl md:text-3xl font-medium text-white text-center mb-12">Quick Start Guide</h2>
 
         <CodeBlock
           title="Basic Setup"
