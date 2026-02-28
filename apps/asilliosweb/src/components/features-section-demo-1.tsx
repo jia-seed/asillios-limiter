@@ -15,22 +15,22 @@ export function FeaturesSectionDemo() {
     {
       title: "Simple Integration",
       description:
-        "Wrap your LLM calls with a few lines of code. Auto-detects OpenAI and Anthropic response formats.",
+        "Wrap your LLM calls with a few lines of code. Auto-detects OpenAI and Anthropic response formats for seamless usage tracking.",
       skeleton: <SkeletonOne />,
       className:
         "col-span-1 md:col-span-1 lg:col-span-4 border-b md:border-r lg:border-r border-neutral-800",
     },
     {
-      title: "Per-User Tracking",
+      title: "Per-User Usage Tracking",
       description:
-        "Track token consumption per user. Set limits, get alerts when users approach quotas, identify power users.",
+        "Track token consumption per user with precision. Set limiting factors, monitor usage patterns, get alerts when users approach quotas.",
       skeleton: <SkeletonTwo />,
       className: "col-span-1 md:col-span-1 lg:col-span-2 border-b border-neutral-800",
     },
     {
-      title: "Threshold Alerts",
+      title: "Smart Threshold Alerts",
       description:
-        "Get notified at 80%, 90%, 100% usage. Custom callbacks for billing integration or user notifications.",
+        "Get notified at 80%, 90%, 100% usage. Custom callbacks for billing integration and user notifications with configurable limiting thresholds.",
       skeleton: <SkeletonThree />,
       className:
         "col-span-1 md:col-span-1 lg:col-span-3 border-b md:border-b lg:border-b-0 md:border-r lg:border-r border-neutral-800",
@@ -38,7 +38,7 @@ export function FeaturesSectionDemo() {
     {
       title: "Production Ready",
       description:
-        "In-memory storage by default. Plug in Redis or any database with the StorageAdapter interface.",
+        "In-memory storage by default. Plug in Redis or any database with the StorageAdapter interface. Battle-tested limiting implementation.",
       skeleton: <SkeletonFour />,
       className: "col-span-1 md:col-span-1 lg:col-span-3 border-neutral-800",
     },
@@ -106,16 +106,22 @@ export function FeaturesSectionDemo() {
             </h1>
 
             <p className="text-lg md:text-xl text-neutral-300 font-normal leading-snug mb-4">
-              Give users free tiers without getting surprised by a massive API bill.
+              Give users free tiers without getting surprised by a massive API bill through intelligent usage limiting.
             </p>
 
             <p className="text-sm md:text-base text-neutral-400 font-normal leading-relaxed mb-4">
-              Asillios is an open source TypeScript library for per-user rate limiting, usage stats, and threshold alerts.
+              Asillios is an open source TypeScript library for per-user rate limiting, usage tracking, and threshold alerts. Monitor usage synonyms across different API providers, implement smart limiting factors, and maintain control over your costs.
             </p>
 
-            <a href="https://www.npmjs.com/package/asillios-limiter" target="_blank" className="text-xs text-neutral-500 hover:text-neutral-300 transition-colors mb-8 block">
-              215+ downloads on npm
-            </a>
+            <div className="flex flex-col sm:flex-row sm:items-center gap-2 mb-8">
+              <a href="https://www.npmjs.com/package/asillios-limiter" target="_blank" className="text-xs text-neutral-500 hover:text-neutral-300 transition-colors">
+                215+ downloads on npm
+              </a>
+              <span className="hidden sm:block text-neutral-700">•</span>
+              <button onClick={() => document.getElementById('quickstart')?.scrollIntoView({ behavior: 'smooth' })} className="text-xs text-teal-500 hover:text-teal-400 transition-colors">
+                View usage examples →
+              </button>
+            </div>
 
             <div id="install" className="flex flex-col sm:flex-row items-center gap-4 mb-8 scroll-mt-20">
               <div
@@ -196,7 +202,8 @@ export function FeaturesSectionDemo() {
           <div className="flex flex-col items-center justify-center">
             <Image
               src="/greek.png"
-              alt="Greek sanctuary illustration"
+              alt="Greek sanctuary illustration representing Asillios rate limiting protection"
+              title="Asillios - Your API's Sacred Refuge from Unexpected Costs"
               width={400}
               height={400}
               priority
@@ -204,7 +211,7 @@ export function FeaturesSectionDemo() {
               className="opacity-80 w-48 h-48 md:w-64 md:h-64 lg:w-[400px] lg:h-[400px]"
             />
             <p className="text-xs md:text-sm text-neutral-500 text-center mt-4 md:mt-6 max-w-xs md:max-w-sm leading-relaxed px-4 md:px-0">
-              The name comes from the Greek <em className="text-neutral-200 not-italic">ásylon</em>, a <span className="text-neutral-200">sacred refuge</span> where nothing could be seized. <span className="text-neutral-200">Asillios</span> (a- without + sill- seizure + -ios one who is) is your software&apos;s <span className="text-neutral-200">sanctuary</span> from unexpected costs.
+              The name comes from the Greek <em className="text-neutral-200 not-italic">ásylon</em>, a <span className="text-neutral-200">sacred refuge</span> where nothing could be seized. <span className="text-neutral-200">Asillios</span> (a- without + sill- seizure + -ios one who is) is your software&apos;s <span className="text-neutral-200">sanctuary</span> from unexpected costs through intelligent <button onClick={() => document.getElementById('features')?.scrollIntoView({ behavior: 'smooth' })} className="text-teal-400 hover:text-teal-300 underline transition-colors">usage limiting</button>.
             </p>
           </div>
         </div>
@@ -224,18 +231,23 @@ export function FeaturesSectionDemo() {
 
       {/* Code Examples Section */}
       <div id="quickstart" className="mt-20 px-4 md:px-8 space-y-8 scroll-mt-20">
-        <h2 className="text-2xl md:text-3xl font-medium text-white text-center mb-12">Quick Start</h2>
+        <div className="text-center mb-12">
+          <h2 className="text-2xl md:text-3xl font-medium text-white mb-4">Quick Start Guide</h2>
+          <p className="text-neutral-400 text-sm md:text-base max-w-2xl mx-auto">
+            Implement rate limiting and usage tracking in minutes. These examples show common usage patterns and limiting strategies.
+          </p>
+        </div>
 
         <CodeBlock
-          title="Basic Setup"
+          title="Basic Setup - Configure Usage Limiting"
           code={`import { createLimiter } from "asillios-limiter";
 
 const limiter = createLimiter({
-  limit: 100000, // 100k tokens per window
+  limit: 100000, // 100k tokens per window - key limiting factor
   window: 60 * 60 * 1000, // 1 hour
-  thresholds: [80, 90, 100],
+  thresholds: [80, 90, 100], // Usage synonym: notification triggers
   onThreshold: (userId, percent) => {
-    console.log(\`user \${userId} hit \${percent}% of their limit\`);
+    console.log(\`user \${userId} hit \${percent}% of their usage limit\`);
   },
 });`}
         />
@@ -261,19 +273,19 @@ const response = await limiter.wrap("user-123", async () => {
         />
 
         <CodeBlock
-          title="Check usage and stats"
-          code={`// Check if user can make more requests
+          title="Monitor Usage and Apply Limiting Factors"
+          code={`// Check if user can make more requests (limiting check)
 const canProceed = await limiter.check("user-123");
 
-// Get detailed stats
+// Get detailed usage stats - comprehensive usage synonym data
 const stats = await limiter.stats("user-123");
 console.log(stats);
 // { tokensUsed: 150, remaining: 99850, resetAt: Date, percentUsed: 0.15 }
 
-// Manually add tokens (useful for streaming)
+// Manually add tokens (useful for streaming usage tracking)
 await limiter.addTokens("user-123", 500);
 
-// Reset a user's usage
+// Reset a user's usage (bypass limiting factors)
 await limiter.reset("user-123");`}
         />
 
