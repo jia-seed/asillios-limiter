@@ -15,15 +15,15 @@ export function FeaturesSectionDemo() {
     {
       title: "Simple Integration",
       description:
-        "Wrap your LLM calls with a few lines of code. Auto-detects OpenAI and Anthropic response formats.",
+        "Wrap your LLM calls with a few lines of code. Auto-detects OpenAI and Anthropic response formats for seamless usage tracking.",
       skeleton: <SkeletonOne />,
       className:
         "col-span-1 md:col-span-1 lg:col-span-4 border-b md:border-r lg:border-r border-neutral-800",
     },
     {
-      title: "Per-User Tracking",
+      title: "Per-User Usage Tracking",
       description:
-        "Track token consumption per user. Set limits, get alerts when users approach quotas, identify power users.",
+        "Track token consumption and usage patterns per user. Set limits, get alerts when users approach quotas, and identify limiting factors in your app's performance.",
       skeleton: <SkeletonTwo />,
       className: "col-span-1 md:col-span-1 lg:col-span-2 border-b border-neutral-800",
     },
@@ -106,11 +106,11 @@ export function FeaturesSectionDemo() {
             </h1>
 
             <p className="text-lg md:text-xl text-neutral-300 font-normal leading-snug mb-4">
-              Give users free tiers without getting surprised by a massive API bill.
+              Give users free tiers without getting surprised by a massive API bill from usage spikes.
             </p>
 
             <p className="text-sm md:text-base text-neutral-400 font-normal leading-relaxed mb-4">
-              Asillios is an open source TypeScript library for per-user rate limiting, usage stats, and threshold alerts.
+              Asillios is an open source TypeScript library for per-user rate limiting, usage tracking, and threshold alerts. Monitor usage patterns, identify limiting factors, and prevent cost overruns with intelligent usage monitoring.
             </p>
 
             <a href="https://www.npmjs.com/package/asillios-limiter" target="_blank" className="text-xs text-neutral-500 hover:text-neutral-300 transition-colors mb-8 block">
@@ -196,7 +196,8 @@ export function FeaturesSectionDemo() {
           <div className="flex flex-col items-center justify-center">
             <Image
               src="/greek.png"
-              alt="Greek sanctuary illustration"
+              alt="Greek sanctuary illustration representing Asillios rate limiting library"
+              title="Asillios - Your software's sanctuary from unexpected API costs"
               width={400}
               height={400}
               priority
@@ -204,7 +205,7 @@ export function FeaturesSectionDemo() {
               className="opacity-80 w-48 h-48 md:w-64 md:h-64 lg:w-[400px] lg:h-[400px]"
             />
             <p className="text-xs md:text-sm text-neutral-500 text-center mt-4 md:mt-6 max-w-xs md:max-w-sm leading-relaxed px-4 md:px-0">
-              The name comes from the Greek <em className="text-neutral-200 not-italic">ásylon</em>, a <span className="text-neutral-200">sacred refuge</span> where nothing could be seized. <span className="text-neutral-200">Asillios</span> (a- without + sill- seizure + -ios one who is) is your software&apos;s <span className="text-neutral-200">sanctuary</span> from unexpected costs.
+              The name comes from the Greek <em className="text-neutral-200 not-italic">ásylon</em>, a <span className="text-neutral-200">sacred refuge</span> where nothing could be seized. <span className="text-neutral-200">Asillios</span> (a- without + sill- seizure + -ios one who is) is your software&apos;s <span className="text-neutral-200">sanctuary</span> from unexpected costs and usage overruns.
             </p>
           </div>
         </div>
@@ -227,15 +228,15 @@ export function FeaturesSectionDemo() {
         <h2 className="text-2xl md:text-3xl font-medium text-white text-center mb-12">Quick Start</h2>
 
         <CodeBlock
-          title="Basic Setup"
+          title="Basic Setup - Configure Usage Limits"
           code={`import { createLimiter } from "asillios-limiter";
 
 const limiter = createLimiter({
   limit: 100000, // 100k tokens per window
   window: 60 * 60 * 1000, // 1 hour
-  thresholds: [80, 90, 100],
+  thresholds: [80, 90, 100], // limiting factors for alerts
   onThreshold: (userId, percent) => {
-    console.log(\`user \${userId} hit \${percent}% of their limit\`);
+    console.log(\`user \${userId} hit \${percent}% of their usage limit\`);
   },
 });`}
         />
@@ -261,19 +262,19 @@ const response = await limiter.wrap("user-123", async () => {
         />
 
         <CodeBlock
-          title="Check usage and stats"
+          title="Monitor Usage Stats and Patterns"
           code={`// Check if user can make more requests
 const canProceed = await limiter.check("user-123");
 
-// Get detailed stats
+// Get detailed usage tracking stats
 const stats = await limiter.stats("user-123");
 console.log(stats);
 // { tokensUsed: 150, remaining: 99850, resetAt: Date, percentUsed: 0.15 }
 
-// Manually add tokens (useful for streaming)
+// Manually add tokens (useful for streaming usage synonyms)
 await limiter.addTokens("user-123", 500);
 
-// Reset a user's usage
+// Reset a user's usage patterns
 await limiter.reset("user-123");`}
         />
 
