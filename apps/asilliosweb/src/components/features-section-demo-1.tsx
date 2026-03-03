@@ -15,7 +15,7 @@ export function FeaturesSectionDemo() {
     {
       title: "Simple Integration",
       description:
-        "Wrap your LLM calls with a few lines of code. Auto-detects OpenAI and Anthropic response formats.",
+        "Wrap your LLM calls with a few lines of code. Auto-detects OpenAI and Anthropic response formats. No complex setup - just import and use as a usage synonym for your existing API calls.",
       skeleton: <SkeletonOne />,
       className:
         "col-span-1 md:col-span-1 lg:col-span-4 border-b md:border-r lg:border-r border-neutral-800",
@@ -23,14 +23,14 @@ export function FeaturesSectionDemo() {
     {
       title: "Per-User Tracking",
       description:
-        "Track token consumption per user. Set limits, get alerts when users approach quotas, identify power users.",
+        "Track token consumption per user with detailed usage synonyms and statistics. Set limits, get alerts when users approach quotas, identify power users and usage patterns.",
       skeleton: <SkeletonTwo />,
       className: "col-span-1 md:col-span-1 lg:col-span-2 border-b border-neutral-800",
     },
     {
       title: "Threshold Alerts",
       description:
-        "Get notified at 80%, 90%, 100% usage. Custom callbacks for billing integration or user notifications.",
+        "Get notified at 80%, 90%, 100% usage. Custom callbacks for billing integration or user notifications. Monitor limiting factors that could impact your API budget.",
       skeleton: <SkeletonThree />,
       className:
         "col-span-1 md:col-span-1 lg:col-span-3 border-b md:border-b lg:border-b-0 md:border-r lg:border-r border-neutral-800",
@@ -110,7 +110,7 @@ export function FeaturesSectionDemo() {
             </p>
 
             <p className="text-sm md:text-base text-neutral-400 font-normal leading-relaxed mb-4">
-              Asillios is an open source TypeScript library for per-user rate limiting, usage stats, and threshold alerts.
+              Asillios is an open source TypeScript library for per-user rate limiting, usage tracking, and threshold alerts. Control limiting factors in your OpenAI and Anthropic API usage with comprehensive token monitoring and cost management.
             </p>
 
             <a href="https://www.npmjs.com/package/asillios-limiter" target="_blank" className="text-xs text-neutral-500 hover:text-neutral-300 transition-colors mb-8 block">
@@ -196,21 +196,23 @@ export function FeaturesSectionDemo() {
           <div className="flex flex-col items-center justify-center">
             <Image
               src="/greek.png"
-              alt="Greek sanctuary illustration"
+              alt="Asillios logo - Ancient Greek sanctuary representing protection from unexpected API costs and usage limiting"
               width={400}
               height={400}
               priority
+              title="Asillios - Your API cost sanctuary"
               sizes="(max-width: 768px) 192px, (max-width: 1024px) 256px, 400px"
               className="opacity-80 w-48 h-48 md:w-64 md:h-64 lg:w-[400px] lg:h-[400px]"
             />
             <p className="text-xs md:text-sm text-neutral-500 text-center mt-4 md:mt-6 max-w-xs md:max-w-sm leading-relaxed px-4 md:px-0">
-              The name comes from the Greek <em className="text-neutral-200 not-italic">ásylon</em>, a <span className="text-neutral-200">sacred refuge</span> where nothing could be seized. <span className="text-neutral-200">Asillios</span> (a- without + sill- seizure + -ios one who is) is your software&apos;s <span className="text-neutral-200">sanctuary</span> from unexpected costs.
+              The name comes from the Greek <em className="text-neutral-200 not-italic">ásylon</em>, a <span className="text-neutral-200">sacred refuge</span> where nothing could be seized. <span className="text-neutral-200">Asillios</span> (a- without + sill- seizure + -ios one who is) is your software&apos;s <span className="text-neutral-200">sanctuary</span> from unexpected costs. A usage synonym for protection against limiting factors in API spending.
             </p>
           </div>
         </div>
       </div>
 
       <div id="features" className="relative scroll-mt-20 px-4 md:px-0">
+        <h2 className="text-2xl md:text-3xl font-medium text-white text-center mb-8">Core Features</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 mt-6 border rounded-md border-neutral-800">
           {features.map((feature) => (
             <FeatureCard key={feature.title} className={feature.className}>
