@@ -282,13 +282,26 @@ function extractTokens(response: unknown): { input: number; output: number } {
  * Calculates estimated cost based on model pricing.
  * @internal
  */
+function findModelPricing(model: string): { input: number; output: number } | undefined {
+  const exactMatch = MODEL_PRICING[model];
+  if (exactMatch) return exactMatch;
+
+  const key = Object.keys(MODEL_PRICING)
+    .filter((pricingKey) => model.includes(pricingKey))
+    .sort((a, b) => b.length - a.length)[0];
+
+  return key ? MODEL_PRICING[key] : undefined;
+}
+
 function calculateCost(input: number, output: number, model?: string): number {
   if (!model) return 0;
-  // find matching model (partial match for versioned model names)
-  const key = Object.keys(MODEL_PRICING).find((k) => model.includes(k));
-  if (!key) return 0;
-  const pricing = MODEL_PRICING[key];
+  const pricing = findModelPricing(model);
+  if (!pricing) return 0;
   return (input / 1000) * pricing.input + (output / 1000) * pricing.output;
+}
+
+function roundCost(cost: number): number {
+  return Math.round((cost + Number.EPSILON) * 100_000_000) / 100_000_000;
 }
 
 /**
@@ -443,7 +456,7 @@ export function createLimiter(config: LimiterConfig) {
     }
 
     // check cost limit if enabled
-    if (config.costLimit) {
+    if (config.costLimit !== undefined) {
       const maxWindow = Math.max(...limits.map((l) => l.window));
       const usage = getWindowUsage(entries, maxWindow);
       if (usage.cost >= config.costLimit * burstMultiplier) return false;
@@ -489,11 +502,11 @@ export function createLimiter(config: LimiterConfig) {
       percentUsed: Math.min(100, percentUsed),
     };
 
-    if (config.trackCost || config.costLimit) {
-      result.costUsed = usage.cost;
-      result.costRemaining = config.costLimit
-        ? Math.max(0, config.costLimit - usage.cost)
-        : undefined;
+    if (config.trackCost || config.costLimit !== undefined) {
+      result.costUsed = roundCost(usage.cost);
+      if (config.costLimit !== undefined) {
+        result.costRemaining = roundCost(Math.max(0, config.costLimit - usage.cost));
+      }
     }
 
     return result;
@@ -570,7 +583,7 @@ export function createLimiter(config: LimiterConfig) {
     const totalTokens = input + output;
 
     if (totalTokens > 0) {
-      const cost = config.trackCost || config.costLimit
+      const cost = config.trackCost || config.costLimit !== undefined
         ? calculateCost(input, output, options?.model)
         : 0;
       await recordUsage(userId, totalTokens, cost);
