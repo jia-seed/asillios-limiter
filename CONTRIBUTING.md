@@ -26,7 +26,7 @@ npm run build
 ### Watch mode
 
 ```bash
-npm run dev
+npm run dev:web
 ```
 
 ### Type checking
