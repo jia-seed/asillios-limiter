@@ -432,6 +432,17 @@ export function createLimiter(config: LimiterConfig) {
     return { tokens, cost };
   }
 
+  function getResetAt(entries: UsageEntry[], windowMs: number): Date {
+    const now = Date.now();
+    const cutoff = now - windowMs;
+    const oldestTimestamp = entries.reduce<number | null>((oldest, entry) => {
+      if (entry.timestamp < cutoff) return oldest;
+      return oldest === null ? entry.timestamp : Math.min(oldest, entry.timestamp);
+    }, null);
+
+    return new Date((oldestTimestamp ?? now) + windowMs);
+  }
+
   // prune old entries that are outside all windows
   function pruneEntries(entries: UsageEntry[]): UsageEntry[] {
     const maxWindow = Math.max(...limits.map((l) => l.window));
@@ -493,7 +504,7 @@ export function createLimiter(config: LimiterConfig) {
 
     const remaining = Math.max(0, primaryLimit.tokens - usage.tokens);
     const percentUsed = (usage.tokens / primaryLimit.tokens) * 100;
-    const resetAt = new Date(Date.now() + primaryLimit.window);
+    const resetAt = getResetAt(entries, primaryLimit.window);
 
     const result: UserStats = {
       tokensUsed: usage.tokens,
