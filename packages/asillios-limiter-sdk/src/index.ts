@@ -531,6 +531,19 @@ export function createLimiter(config: LimiterConfig) {
   ): Promise<void> {
     const data = await getUserData(userId);
     data.entries = pruneEntries(data.entries);
+
+    if (config.onThreshold) {
+      const primaryLimit = limits[0];
+      const usageBeforeUpdate = getWindowUsage(data.entries, primaryLimit.window);
+      const percentUsedBeforeUpdate = (usageBeforeUpdate.tokens / primaryLimit.tokens) * 100;
+
+      for (const threshold of thresholds) {
+        if (percentUsedBeforeUpdate < threshold) {
+          data.thresholdsTriggered.delete(threshold);
+        }
+      }
+    }
+
     data.entries.push({ tokens, cost, timestamp: Date.now() });
 
     // check thresholds and fire callback
